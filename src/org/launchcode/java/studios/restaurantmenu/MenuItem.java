@@ -1,12 +1,17 @@
 package org.launchcode.java.studios.restaurantmenu;
 
+import org.launchcode.java.demos.lsn4classes2.Course;
+
+import java.util.Locale;
+
 public class MenuItem {
+
     //fields
     private String name;
     private Double price;
     private String description;
     private String category;
-    private Boolean newMenuItem = false;
+    private Boolean newMenuItem;
 
     //constructors
     public MenuItem (String name, Double price, String description, String category, Boolean newMenuItem) {
@@ -28,6 +33,8 @@ public class MenuItem {
         this.name = name;
         this.price = price;
     };
+
+    public MenuItem(){};
 
 
 
@@ -68,6 +75,42 @@ public class MenuItem {
 
 
     // METHODS
+    //equals()
+    public boolean equals(Object toBeCompared){
+        if (toBeCompared == this) {
+            return true;
+        }
+        if (toBeCompared == null) {
+            return false;
+        }
+        if (toBeCompared.getClass() != getClass()) {
+            return false;
+        }
+        MenuItem theMenuItem = (MenuItem) toBeCompared;
+        if (theMenuItem.getName() == getName() && theMenuItem.getCategory()==getCategory()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+//    public static boolean isMenuItemNew(MenuItem toBeCompared){
+//        MenuItem theMenuItem = (MenuItem) toBeCompared;
+//        if (theMenuItem.getNewMenuItem() == getNewMenuItem()){
+//            return true;
+//        }else{
+//            return false;
+//        }
+//    }
 
     //validate that the category is an appetizer, main course or dessert?
+    public static boolean validateCategory(String userCategoryInput){
+        String userInput = userCategoryInput.toLowerCase();
+        if (userInput.equals("appetizer") || userInput.equals("main course") || userInput.equals("dessert")){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
 }
